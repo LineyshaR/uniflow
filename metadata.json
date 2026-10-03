@@ -1,0 +1,8 @@
+{
+  "name": "Remix CampusHub - Unified Student \u0026 Campus Life Portal",
+  "description": "All-in-one university campus portal featuring academics, timetable, live canteen ordering \u0026 token queues, complaints desk, document requests, events, section workspace, and AI campus advisor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

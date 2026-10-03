@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+
+  /* Primary: Crisp White & Warm Porcelain Canvas */
+  --color-canvas-white: #FFFFFF;
+  --color-canvas-subtle: #F6F8F6;
+  --color-canvas-border: #E2E8E4;
+
+  /* Rich & Premium: Imperial Forest Emerald & Regal Obsidian */
+  --color-brand-950: #04120C;
+  --color-brand-900: #062318;
+  --color-brand-850: #0A2E20;
+  --color-brand-800: #0D3B2A;
+  --color-brand-700: #047857;
+  --color-brand-600: #059669;
+  --color-brand-500: #10B981;
+  --color-brand-400: #34D399;
+  --color-brand-100: #D1FAE5;
+  --color-brand-50: #ECFDF5;
+
+  /* Luxury Accent: Burnished Warm Champagne Gold */
+  --color-gold-700: #92400E;
+  --color-gold-600: #B45309;
+  --color-gold-500: #D97706;
+  --color-gold-400: #F59E0B;
+  --color-gold-300: #FCD34D;
+  --color-gold-100: #FEF3C7;
+  --color-gold-50: #FFFBEB;
+
+  /* Backwards compatibility aliases mapped to rich shades */
+  --color-navy-950: #04120C;
+  --color-navy-900: #062318;
+  --color-navy-850: #0A2E20;
+  --color-navy-800: #0D3B2A;
+  --color-navy-700: #047857;
+  --color-navy-600: #059669;
+  --color-navy-500: #10B981;
+  --color-navy-400: #34D399;
+  --color-navy-100: #D1FAE5;
+  --color-navy-50: #ECFDF5;
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-[#F6F8F6] text-[#141B18] dark:bg-[#07130E] dark:text-[#F3F7F5];
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.015em;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Apple-style Display Typography */
+  h1, h2, h3, h4 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+
+  .font-apple {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  /* Minimalist luxury scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(13, 59, 42, 0.25);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(13, 59, 42, 0.45);
+  }
+}

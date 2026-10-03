@@ -1,0 +1,148 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Student, faculty, or staff member university profile.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 120 },
+        "role": { "type": "string", "enum": ["student", "cr", "faculty", "canteen_staff", "admin"] },
+        "rollNo": { "type": "string", "maxLength": 50 },
+        "department": { "type": "string", "maxLength": 100 },
+        "semester": { "type": "number" },
+        "section": { "type": "string", "maxLength": 20 },
+        "avatar": { "type": "string", "maxLength": 500 },
+        "walletBalance": { "type": "number" },
+        "cgpa": { "type": "number" },
+        "attendanceOverall": { "type": "number" },
+        "hostelRoom": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "bio": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "name", "email", "role", "rollNo", "department"]
+    },
+    "CanteenOrder": {
+      "title": "CanteenOrder",
+      "description": "Live food order placed by student at central canteen.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "tokenNumber": { "type": "string", "maxLength": 20 },
+        "studentId": { "type": "string", "maxLength": 128 },
+        "studentName": { "type": "string", "maxLength": 100 },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["Received", "Preparing", "Ready", "Picked Up"] },
+        "orderTime": { "type": "string", "maxLength": 50 },
+        "estimatedPickupTime": { "type": "string", "maxLength": 50 },
+        "counterNumber": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "tokenNumber", "studentId", "totalAmount", "status"]
+    },
+    "GrievanceComplaint": {
+      "title": "GrievanceComplaint",
+      "description": "Maintenance, hostel or facility grievance ticket.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "ticketNumber": { "type": "string", "maxLength": 50 },
+        "title": { "type": "string", "maxLength": 150 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string", "enum": ["Hostel", "Mess/Food", "Academics", "Infrastructure", "Library", "IT & Wi-Fi"] },
+        "location": { "type": "string", "maxLength": 100 },
+        "priority": { "type": "string", "enum": ["Low", "Medium", "High", "Emergency"] },
+        "status": { "type": "string", "enum": ["Submitted", "In Progress", "Action Taken", "Resolved"] },
+        "submittedBy": { "type": "string", "maxLength": 100 },
+        "submittedAt": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 50 },
+        "resolutionRemark": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "ticketNumber", "title", "description", "category", "status"]
+    },
+    "Notice": {
+      "title": "Notice",
+      "description": "Official campus circular or urgent alert.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 4000 },
+        "category": { "type": "string", "enum": ["Academic", "Exams", "Placement", "Sports", "Administrative", "Events"] },
+        "author": { "type": "string", "maxLength": 100 },
+        "authorRole": { "type": "string", "maxLength": 100 },
+        "date": { "type": "string", "maxLength": 50 },
+        "isUrgent": { "type": "boolean" },
+        "isPinned": { "type": "boolean" }
+      },
+      "required": ["id", "title", "content", "category", "author", "date"]
+    },
+    "DocumentRequest": {
+      "title": "DocumentRequest",
+      "description": "E-governance document issuance request.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "requestId": { "type": "string", "maxLength": 50 },
+        "type": { "type": "string", "maxLength": 100 },
+        "purpose": { "type": "string", "maxLength": 300 },
+        "status": { "type": "string", "enum": ["Processing", "Ready for Download", "Pending Verification", "Rejected"] },
+        "requestDate": { "type": "string", "maxLength": 50 },
+        "completionDate": { "type": "string", "maxLength": 50 },
+        "downloadUrl": { "type": "string", "maxLength": 500 },
+        "remarks": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "requestId", "type", "purpose", "status", "requestDate"]
+    },
+    "AcademicTask": {
+      "title": "AcademicTask",
+      "description": "Coursework assignments, lab projects, or homework assigned by faculty.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "courseCode": { "type": "string", "maxLength": 30 },
+        "courseName": { "type": "string", "maxLength": 150 },
+        "facultyId": { "type": "string", "maxLength": 128 },
+        "facultyName": { "type": "string", "maxLength": 100 },
+        "assignedDate": { "type": "string", "maxLength": 50 },
+        "dueDate": { "type": "string", "maxLength": 50 },
+        "priority": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "type": { "type": "string", "enum": ["Lab Assignment", "Theory Homework", "Project Milestone", "Quiz Preparation", "Class Presentation"] },
+        "totalPoints": { "type": "number" },
+        "targetSection": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 3000 },
+        "submissionsCount": { "type": "number" },
+        "totalStudents": { "type": "number" },
+        "status": { "type": "string", "enum": ["Active", "Reviewing", "Closed"] }
+      },
+      "required": ["id", "title", "courseCode", "facultyName", "dueDate", "totalPoints", "targetSection"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Registered campus students, professors, and administrative staff."
+    },
+    "/canteenOrders/{orderId}": {
+      "schema": { "$ref": "#/entities/CanteenOrder" },
+      "description": "Live food court orders and tokens for cafeteria operations."
+    },
+    "/complaints/{complaintId}": {
+      "schema": { "$ref": "#/entities/GrievanceComplaint" },
+      "description": "Student grievances and campus facility maintenance tickets."
+    },
+    "/notices/{noticeId}": {
+      "schema": { "$ref": "#/entities/Notice" },
+      "description": "Official circulars and announcements from college administration."
+    },
+    "/documentRequests/{requestId}": {
+      "schema": { "$ref": "#/entities/DocumentRequest" },
+      "description": "Student certificates and official transcript requests."
+    },
+    "/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/AcademicTask" },
+      "description": "Coursework tasks created and assigned by faculty members."
+    }
+  }
+}
